@@ -22,7 +22,11 @@ connectDB();
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://sweet-shop-management-system-ashy.vercel.app',
+  origin: [
+    'http://localhost:3000',
+    'https://sweet-shop-management-system-ashy.vercel.app',
+    process.env.CORS_ORIGIN
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(morgan('combined'));
