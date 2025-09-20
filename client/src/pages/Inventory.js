@@ -31,7 +31,7 @@ import {
   Inventory as InventoryIcon,
   ShoppingCart as ShoppingCartIcon
 } from '@mui/icons-material';
-import axios from 'axios';
+import api from '../config/axios';
 
 function Inventory() {
   const [sweets, setSweets] = useState([]);
@@ -50,18 +50,24 @@ function Inventory() {
 
   const fetchData = async () => {
     try {
+      console.log('Fetching inventory data...');
       const [sweetsResponse, lowStockResponse, analyticsResponse] = await Promise.all([
-        axios.get('/api/sweets'),
-        axios.get('/api/inventory/stock'),
-        axios.get('/api/inventory/analytics')
+        api.get('/api/sweets'),
+        api.get('/api/inventory/stock'),
+        api.get('/api/inventory/analytics')
       ]);
+
+      console.log('Sweets response:', sweetsResponse.data);
+      console.log('Low stock response:', lowStockResponse.data);
+      console.log('Analytics response:', analyticsResponse.data);
 
       setSweets(sweetsResponse.data.data.sweets);
       setLowStockItems(lowStockResponse.data.data.lowStockItems);
       setAnalytics(analyticsResponse.data.data);
     } catch (error) {
-      setError('Failed to fetch inventory data');
       console.error('Error fetching inventory data:', error);
+      console.error('Error response:', error.response);
+      setError('Failed to fetch inventory data: ' + (error.response?.data?.message || error.message));
     } finally {
       setLoading(false);
     }
@@ -89,7 +95,7 @@ function Inventory() {
         ? `/api/inventory/sweets/${selectedSweet._id}/purchase`
         : `/api/inventory/sweets/${selectedSweet._id}/restock`;
 
-      await axios.post(endpoint, { quantity: parseInt(quantity) });
+      await api.post(endpoint, { quantity: parseInt(quantity) });
       handleCloseDialog();
       fetchData();
     } catch (error) {

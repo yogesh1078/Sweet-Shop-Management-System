@@ -25,7 +25,7 @@ import {
   Delete as DeleteIcon,
 } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
+import api from '../config/axios';
 
 function SweetManagement() {
   const [sweets, setSweets] = useState([]);
@@ -58,7 +58,7 @@ function SweetManagement() {
 
   const fetchSweets = async () => {
     try {
-      const response = await axios.get('/api/sweets');
+      const response = await api.get('/api/sweets');
       setSweets(response.data.data.sweets);
     } catch (error) {
       setError('Failed to fetch sweets');
@@ -128,9 +128,9 @@ function SweetManagement() {
       };
 
       if (editingSweet) {
-        await axios.put(`/api/sweets/${editingSweet._id}`, sweetData);
+        await api.put(`/api/sweets/${editingSweet._id}`, sweetData);
       } else {
-        await axios.post('/api/sweets', sweetData);
+        await api.post('/api/sweets', sweetData);
       }
 
       handleCloseDialog();
@@ -147,7 +147,7 @@ function SweetManagement() {
   const handleDelete = async (sweetId) => {
     if (window.confirm('Are you sure you want to delete this sweet?')) {
       try {
-        await axios.delete(`/api/sweets/${sweetId}`);
+        await api.delete(`/api/sweets/${sweetId}`);
         fetchSweets();
       } catch (error) {
         setError(error.response?.data?.message || 'Delete failed');
