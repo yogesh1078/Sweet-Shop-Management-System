@@ -3,17 +3,6 @@ import api from '../config/axios';
 
 const AuthContext = createContext();
 
-// Set the base URL based on environment
-const API_BASE_URL = process.env.NODE_ENV === 'production'
-  ? 'https://sweet-shop-management-system-4-qnva.onrender.com'
-  : '';
-
-// Create an axios instance with the base URL
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  withCredentials: true
-});
-
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {
@@ -29,7 +18,6 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       // Verify token and get user info
       checkAuth();
     } else {
@@ -44,7 +32,6 @@ export function AuthProvider({ children }) {
     } catch (error) {
       console.error('Auth check failed:', error);
       localStorage.removeItem('token');
-      delete axios.defaults.headers.common['Authorization'];
     } finally {
       setLoading(false);
     }
@@ -56,7 +43,6 @@ export function AuthProvider({ children }) {
       const { user: userData, token } = response.data.data;
       
       localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(userData);
       
       return { success: true };
@@ -78,7 +64,6 @@ export function AuthProvider({ children }) {
       const { user: userData, token } = response.data.data;
       
       localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(userData);
       
       return { success: true };
@@ -92,7 +77,6 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     localStorage.removeItem('token');
-    delete axios.defaults.headers.common['Authorization'];
     setUser(null);
   };
 

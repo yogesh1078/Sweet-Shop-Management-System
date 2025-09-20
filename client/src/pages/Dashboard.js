@@ -19,7 +19,7 @@ import {
   ShoppingCart as ShoppingCartIcon,
   TrendingUp as TrendingUpIcon
 } from '@mui/icons-material';
-import axios from 'axios';
+import api from '../config/axios';
 
 function Dashboard() {
   const [sweets, setSweets] = useState([]);
@@ -42,11 +42,14 @@ function Dashboard() {
 
   const fetchSweets = async () => {
     try {
-      const response = await axios.get('/api/sweets');
+      console.log('Fetching sweets...');
+      const response = await api.get('/api/sweets');
+      console.log('Sweets response:', response.data);
       setSweets(response.data.data.sweets);
     } catch (error) {
-      setError('Failed to fetch sweets');
       console.error('Error fetching sweets:', error);
+      console.error('Error response:', error.response);
+      setError('Failed to fetch sweets: ' + (error.response?.data?.message || error.message));
     } finally {
       setLoading(false);
     }
@@ -54,7 +57,7 @@ function Dashboard() {
 
   const handlePurchase = async (sweetId, quantity = 1) => {
     try {
-      await axios.post(`/api/inventory/sweets/${sweetId}/purchase`, { quantity });
+      await api.post(`/api/inventory/sweets/${sweetId}/purchase`, { quantity });
       // Refresh sweets data
       fetchSweets();
     } catch (error) {
@@ -262,4 +265,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
