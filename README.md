@@ -6,8 +6,8 @@ A comprehensive full-stack web application for managing a sweet shop inventory, 
 
 ## Insctruction for the login(Credentials)
 
-   **For Normal User : Email->> balaji@123gmail.com , Password :->> Balaji@123
-   **For Admin User  : Email->> admin@example.com , Password :->>  Admin123!
+  -  **For Normal User : Email->> balaji@123gmail.com , Password :->> Balaji@123
+  -  **For Admin User  : Email->> admin@example.com , Password :->>  Admin123!
 
 ### Backend API
 - **Authentication System**: JWT-based user authentication with role-based access control
