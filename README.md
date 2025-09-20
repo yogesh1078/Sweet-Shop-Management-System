@@ -1,8 +1,8 @@
-# 🍭 Sweet Shop Management System
+#  Sweet Shop Management System
 
 A comprehensive full-stack web application for managing a sweet shop inventory, built with the MERN stack (MongoDB, Express.js, React, Node.js) using Test-Driven Development (TDD) principles.
 
-## ✨ Features
+##  Features
 
 ### Backend API
 - **Authentication System**: JWT-based user authentication with role-based access control
@@ -21,7 +21,7 @@ A comprehensive full-stack web application for managing a sweet shop inventory, 
 - **Search & Filter**: Advanced search and filtering capabilities
 - **Role-based Access**: Different interfaces for users and administrators
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 ### Backend
 - **Node.js** - Runtime environment
@@ -39,13 +39,13 @@ A comprehensive full-stack web application for managing a sweet shop inventory, 
 - **Axios** - HTTP client
 - **Context API** - State management
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - Node.js (v14 or higher)
 - MongoDB (v4.4 or higher)
 - npm or yarn
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -115,7 +115,7 @@ The application will be available at:
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:5000
 
-## 🧪 Testing
+##  Testing
 
 ### Run All Tests
 ```bash
@@ -132,7 +132,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### Authentication Endpoints
 - `POST /api/auth/register` - Register a new user
@@ -153,7 +153,7 @@ npm run test:coverage
 - `GET /api/inventory/stock` - Get low stock items (Admin only)
 - `GET /api/inventory/analytics` - Get inventory analytics (Admin only)
 
-## 🎯 User Roles
+##  User Roles
 
 ### Regular User
 - View all available sweets
@@ -168,7 +168,7 @@ npm run test:coverage
 - View analytics and reports
 - Access admin-only features
 
-## 🏗️ Project Structure
+##  Project Structure
 
 ```
 sweet-shop-management/
@@ -205,7 +205,7 @@ sweet-shop-management/
 └── README.md
 ```
 
-## 🔒 Security Features
+##  Security Features
 
 - JWT-based authentication
 - Password hashing with bcrypt
@@ -214,7 +214,7 @@ sweet-shop-management/
 - Helmet.js security headers
 - Role-based access control
 
-## 🚀 Deployment
+##  Deployment
 
 ### Backend Deployment
 1. Set up MongoDB Atlas or use a cloud MongoDB service
@@ -225,7 +225,7 @@ sweet-shop-management/
 1. Build the React app: `npm run build`
 2. Deploy to platforms like Netlify, Vercel, or AWS S3
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -234,11 +234,7 @@ sweet-shop-management/
 5. Ensure all tests pass
 6. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🎉 Acknowledgments
+##  Acknowledgments
 
 - Material-UI for the beautiful component library
 - MongoDB for the flexible database solution
@@ -247,7 +243,7 @@ This project is licensed under the MIT License.
 
 ---
 
-**Happy Coding! 🍭✨**
+**Happy Coding! **
 
 
 
