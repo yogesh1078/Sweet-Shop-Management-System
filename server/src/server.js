@@ -21,7 +21,7 @@ connectDB();
 
 // Middleware
 app.use(helmet());
-const cors = require('cors');
+
 
 app.use(cors({
   origin: true, // Allow all origins
