@@ -4,7 +4,6 @@ import axios from 'axios';
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'https://sweet-shop-management-system-4-qnva.onrender.com',
   timeout: 10000,
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
