@@ -21,12 +21,10 @@ connectDB();
 
 // Middleware
 app.use(helmet());
+const cors = require('cors');
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://sweet-shop-management-system-ashy.vercel.app',
-    process.env.CORS_ORIGIN
-  ].filter(Boolean),
+  origin: true, // Allow all origins
   credentials: true
 }));
 app.use(morgan('combined'));
